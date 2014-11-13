@@ -31,6 +31,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :public_network
   config.vm.hostname = "logserver.trt8.net"
 
+  if Vagrant.has_plugin?('vagrant-proxyconf')
+    config.proxy.http  = 'http://10.8.14.22:6588'
+    config.proxy.https = 'http://10.8.14.22:6588'
+  end
+
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
   # config.ssh.forward_agent = true
