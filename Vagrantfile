@@ -29,7 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   config.vm.network :public_network
-  config.vm.hostname "logserver.trt8.net"
+  config.vm.hostname = "logserver.trt8.net"
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
