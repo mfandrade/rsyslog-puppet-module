@@ -29,6 +29,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   config.vm.network :public_network
+  config.vm.hostname "logserver"
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
@@ -76,10 +77,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # You will need to create the manifests directory and a manifest in
   # the file default.pp in the manifests_path directory.
   #
-  # config.vm.provision "puppet" do |puppet|
-  #   puppet.manifests_path = "manifests"
-  #   puppet.manifest_file  = "site.pp"
-  # end
+  config.vm.provision "puppet" do |puppet|
+    puppet.manifest_file  = "site.pp"
+    puppet.manifests_path = "manifests"
+    puppet.module_path    = "manifests/modules"
+  end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
