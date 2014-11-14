@@ -19,6 +19,7 @@ class rsyslog {
     hasrestart => true,
     hasstatus  => true,
     require    => File['rsyslog.conf'],
+    subscribe  => [File['relp.conf'], File['mysql.conf'], File['rsyslog.conf']],
   }
 
   file { 'relp.conf':
